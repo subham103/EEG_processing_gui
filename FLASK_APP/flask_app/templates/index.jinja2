@@ -1,0 +1,111 @@
+{% extends 'layout.jinja2' %}
+
+{% block styles %}
+    <link
+        rel="stylesheet"
+        href="{{ url_for('static', filename='css/forms.css') }}"
+        type="text/css"
+    />
+{% endblock %}
+
+{% block content %}
+    <div class="form-wrapper">
+      <h2 class="title">Validation Data</h2>
+
+      <form method="POST" action="{{ url_for('visualize') }}">
+          {{ form.csrf_token }}
+
+          <fieldset class="form-field">{{ form.address_A.label }} {{ form.address_A }}
+            {% if form.address_A.errors %}
+              <ul class="errors">
+                {% for error in form.address_A.errors %}
+                  <li class="error">
+                      <i class="fas fa-exclamation"></i> <span class="error-message">{{ error }}</span>
+                  </li>
+                {% endfor %}
+              </ul>
+            {% endif %}
+          </fieldset>
+
+          <fieldset class="form-field">{{ form.address_B.label }} {{ form.address_B }}
+            {% if form.address_B.errors %}
+              <ul class="errors">
+                {% for error in form.address_B.errors %}
+                  <li class="error">
+                      <i class="fas fa-exclamation"></i> <span class="error-message">{{ error }}</span>
+                  </li>
+                {% endfor %}
+              </ul>
+            {% endif %}
+          </fieldset>
+
+          <fieldset class="form-field">{{ form.sampling_rate.label }} {{ form.sampling_rate }}
+            {% if form.sampling_rate.errors %}
+              <ul class="errors">
+                {% for error in form.sampling_rate.errors %}
+                  <li class="error">
+                      <i class="fas fa-exclamation"></i> <span class="error-message">{{ error }}</span>
+                  </li>
+                {% endfor %}
+              </ul>
+            {% endif %}
+          </fieldset>
+
+          <fieldset class="form-field">{{ form.low_frequency.label }} {{ form.low_frequency }}
+            <i class="fas fa-caret-down"></i>
+            {% if form.low_frequency.errors %}
+              <ul class="errors">
+                {% for error in form.email.errors %}
+                  <li class="error">
+                      <i class="fas fa-exclamation"></i> <span class="error-message">{{ error }}</span>
+                  </li>
+                {% endfor %}
+              </ul>
+            {% endif %}
+          </fieldset>
+
+          <fieldset class="form-field">{{ form.high_frequency.label }} {{ form.high_frequency }}
+            <i class="fas fa-caret-down"></i>
+            {% if form.high_frequency.errors %}
+              <ul class="errors">
+                {% for error in form.email.errors %}
+                  <li class="error">
+                      <i class="fas fa-exclamation"></i> <span class="error-message">{{ error }}</span>
+                  </li>
+                {% endfor %}
+              </ul>
+            {% endif %}
+          </fieldset>
+
+          <fieldset class="form-field">{{ form.filter_method.label }} {{ form.filter_method }}
+            <i class="fas fa-caret-down"></i>
+            {% if form.filter_method.errors %}
+              <ul class="errors">
+                {% for error in form.email.errors %}
+                  <li class="error">
+                      <i class="fas fa-exclamation"></i> <span class="error-message">{{ error }}</span>
+                  </li>
+                {% endfor %}
+              </ul>
+            {% endif %}
+          </fieldset>
+
+          <fieldset class="form-field">{{ form.window_type.label }} {{ form.window_type }}
+            <i class="fas fa-caret-down"></i>
+            {% if form.window_type.errors %}
+              <ul class="errors">
+                {% for error in form.email.errors %}
+                  <li class="error">
+                      <i class="fas fa-exclamation"></i> <span class="error-message">{{ error }}</span>
+                  </li>
+                {% endfor %}
+              </ul>
+            {% endif %}
+          </fieldset>
+
+          {{ form.submit }}
+
+      </form>
+    </div>
+
+{% endblock %}
