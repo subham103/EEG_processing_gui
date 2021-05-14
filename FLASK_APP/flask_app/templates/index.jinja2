@@ -51,11 +51,24 @@
             {% endif %}
           </fieldset>
 
+          <fieldset class="form-field">{{ form.apply_filter.label }} {{ form.apply_filter }}
+            <i class="fas fa-caret-down arrow-down"></i>
+            {% if form.apply_filter.errors %}
+              <ul class="errors">
+                {% for error in form.apply_filter.errors %}
+                  <li class="error">
+                      <i class="fas fa-exclamation"></i> <span class="error-message">{{ error }}</span>
+                  </li>
+                {% endfor %}
+              </ul>
+            {% endif %}
+          </fieldset>
+
           <fieldset class="form-field">{{ form.low_frequency.label }} {{ form.low_frequency }}
-            <i class="fas fa-caret-down"></i>
+            <i class="fas fa-caret-down arrow-down"></i>
             {% if form.low_frequency.errors %}
               <ul class="errors">
-                {% for error in form.email.errors %}
+                {% for error in form.low_frequency.errors %}
                   <li class="error">
                       <i class="fas fa-exclamation"></i> <span class="error-message">{{ error }}</span>
                   </li>
@@ -65,10 +78,10 @@
           </fieldset>
 
           <fieldset class="form-field">{{ form.high_frequency.label }} {{ form.high_frequency }}
-            <i class="fas fa-caret-down"></i>
+            <i class="fas fa-caret-down arrow-down"></i>
             {% if form.high_frequency.errors %}
               <ul class="errors">
-                {% for error in form.email.errors %}
+                {% for error in form.high_frequency.errors %}
                   <li class="error">
                       <i class="fas fa-exclamation"></i> <span class="error-message">{{ error }}</span>
                   </li>
@@ -78,10 +91,10 @@
           </fieldset>
 
           <fieldset class="form-field">{{ form.filter_method.label }} {{ form.filter_method }}
-            <i class="fas fa-caret-down"></i>
+            <i class="fas fa-caret-down arrow-down"></i>
             {% if form.filter_method.errors %}
               <ul class="errors">
-                {% for error in form.email.errors %}
+                {% for error in form.filter_method.errors %}
                   <li class="error">
                       <i class="fas fa-exclamation"></i> <span class="error-message">{{ error }}</span>
                   </li>
@@ -91,10 +104,10 @@
           </fieldset>
 
           <fieldset class="form-field">{{ form.window_type.label }} {{ form.window_type }}
-            <i class="fas fa-caret-down"></i>
+            <i class="fas fa-caret-down arrow-down"></i>
             {% if form.window_type.errors %}
               <ul class="errors">
-                {% for error in form.email.errors %}
+                {% for error in form.window_type.errors %}
                   <li class="error">
                       <i class="fas fa-exclamation"></i> <span class="error-message">{{ error }}</span>
                   </li>
@@ -102,6 +115,156 @@
               </ul>
             {% endif %}
           </fieldset>
+
+          <div class="range-wrapper">
+            <fieldset class="form-field half-width">{{ form.delta_frequency_initial.label }} {{ form.delta_frequency_initial }}
+              {% if form.delta_frequency_initial.errors %}
+                <ul class="errors">
+                  {% for error in form.delta_frequency_initial.errors %}
+                    <li class="error">
+                        <i class="fas fa-exclamation"></i> <span class="error-message">{{ error }}</span>
+                    </li>
+                  {% endfor %}
+                </ul>
+              {% endif %}
+            </fieldset>
+            <fieldset class="form-field half-width">{{ form.delta_frequency_final.label }} {{ form.delta_frequency_final }}
+              {% if form.delta_frequency_final.errors %}
+                <ul class="errors">
+                  {% for error in form.delta_frequency_final.errors %}
+                    <li class="error">
+                        <i class="fas fa-exclamation"></i> <span class="error-message">{{ error }}</span>
+                    </li>
+                  {% endfor %}
+                </ul>
+              {% endif %}
+            </fieldset>
+          </div>
+
+          <div class="range-wrapper">
+            <fieldset class="form-field half-width">{{ form.theta_frequency_initial.label }} {{ form.theta_frequency_initial }}
+              {% if form.theta_frequency_initial.errors %}
+                <ul class="errors">
+                  {% for error in form.theta_frequency_initial.errors %}
+                    <li class="error">
+                        <i class="fas fa-exclamation"></i> <span class="error-message">{{ error }}</span>
+                    </li>
+                  {% endfor %}
+                </ul>
+              {% endif %}
+            </fieldset>
+            <fieldset class="form-field half-width">{{ form.theta_frequency_final.label }} {{ form.theta_frequency_final }}
+              {% if form.theta_frequency_final.errors %}
+                <ul class="errors">
+                  {% for error in form.theta_frequency_final.errors %}
+                    <li class="error">
+                        <i class="fas fa-exclamation"></i> <span class="error-message">{{ error }}</span>
+                    </li>
+                  {% endfor %}
+                </ul>
+              {% endif %}
+            </fieldset>
+          </div>
+
+          <div class="range-wrapper">
+            <fieldset class="form-field half-width">{{ form.alpha_frequency_initial.label }} {{ form.alpha_frequency_initial }}
+              {% if form.alpha_frequency_initial.errors %}
+                <ul class="errors">
+                  {% for error in form.alpha_frequency_initial.errors %}
+                    <li class="error">
+                        <i class="fas fa-exclamation"></i> <span class="error-message">{{ error }}</span>
+                    </li>
+                  {% endfor %}
+                </ul>
+              {% endif %}
+            </fieldset>
+            <fieldset class="form-field half-width">{{ form.alpha_frequency_final.label }} {{ form.alpha_frequency_final }}
+              {% if form.alpha_frequency_final.errors %}
+                <ul class="errors">
+                  {% for error in form.alpha_frequency_final.errors %}
+                    <li class="error">
+                        <i class="fas fa-exclamation"></i> <span class="error-message">{{ error }}</span>
+                    </li>
+                  {% endfor %}
+                </ul>
+              {% endif %}
+            </fieldset>
+          </div>
+
+          <div class="range-wrapper">
+            <fieldset class="form-field half-width">{{ form.beta_frequency_initial.label }} {{ form.beta_frequency_initial }}
+              {% if form.beta_frequency_initial.errors %}
+                <ul class="errors">
+                  {% for error in form.beta_frequency_initial.errors %}
+                    <li class="error">
+                        <i class="fas fa-exclamation"></i> <span class="error-message">{{ error }}</span>
+                    </li>
+                  {% endfor %}
+                </ul>
+              {% endif %}
+            </fieldset>
+            <fieldset class="form-field half-width">{{ form.beta_frequency_final.label }} {{ form.beta_frequency_final }}
+              {% if form.beta_frequency_final.errors %}
+                <ul class="errors">
+                  {% for error in form.beta_frequency_final.errors %}
+                    <li class="error">
+                        <i class="fas fa-exclamation"></i> <span class="error-message">{{ error }}</span>
+                    </li>
+                  {% endfor %}
+                </ul>
+              {% endif %}
+            </fieldset>
+          </div>
+
+          <div class="range-wrapper">
+            <fieldset class="form-field half-width">{{ form.gamma_frequency_initial.label }} {{ form.gamma_frequency_initial }}
+              {% if form.gamma_frequency_initial.errors %}
+                <ul class="errors">
+                  {% for error in form.gamma_frequency_initial.errors %}
+                    <li class="error">
+                        <i class="fas fa-exclamation"></i> <span class="error-message">{{ error }}</span>
+                    </li>
+                  {% endfor %}
+                </ul>
+              {% endif %}
+            </fieldset>
+            <fieldset class="form-field half-width">{{ form.gamma_frequency_final.label }} {{ form.gamma_frequency_final }}
+              {% if form.gamma_frequency_final.errors %}
+                <ul class="errors">
+                  {% for error in form.gamma_frequency_final.errors %}
+                    <li class="error">
+                        <i class="fas fa-exclamation"></i> <span class="error-message">{{ error }}</span>
+                    </li>
+                  {% endfor %}
+                </ul>
+              {% endif %}
+            </fieldset>
+          </div>
+
+          <div class="range-wrapper">
+            <fieldset class="form-field half-width">{{ form.initial_datapoint.label }} {{ form.initial_datapoint }}
+              {% if form.initial_datapoint.errors %}
+                <ul class="errors">
+                  {% for error in form.initial_datapoint.errors %}
+                    <li class="error">
+                        <i class="fas fa-exclamation"></i> <span class="error-message">{{ error }}</span>
+                    </li>
+                  {% endfor %}
+                </ul>
+              {% endif %}
+            </fieldset>
+            <fieldset class="form-field half-width">{{ form.final_datapoint.label }} {{ form.final_datapoint }}
+              {% if form.final_datapoint.errors %}
+                <ul class="errors">
+                  {% for error in form.final_datapoint.errors %}
+                    <li class="error">
+                        <i class="fas fa-exclamation"></i> <span class="error-message">{{ error }}</span>
+                    </li>
+                  {% endfor %}
+                </ul>
+              {% endif %}
+            </fieldset>
+          </div>
 
           {{ form.submit }}
 
