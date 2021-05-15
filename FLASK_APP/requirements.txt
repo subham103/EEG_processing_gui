@@ -21,3 +21,7 @@ numpy
 PyWavelets
 seaborn
 scipy
+astropy
+# entropy
+nolds
+sklearn

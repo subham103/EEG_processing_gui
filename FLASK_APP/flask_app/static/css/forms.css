@@ -156,3 +156,17 @@ i {
 .g-recaptcha div {
   margin: auto;
 }
+
+.arrow-down {
+  position: absolute;
+  right: 0%;
+  top: 30%;
+}
+
+.range-wrapper {
+  display: flex;
+}
+
+.half-width {
+  width: 50%;
+}

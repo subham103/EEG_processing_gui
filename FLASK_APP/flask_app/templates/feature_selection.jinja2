@@ -1,0 +1,153 @@
+{% extends 'layout.jinja2' %}
+
+{% block styles %}
+    <link
+        rel="stylesheet"
+        href="{{ url_for('static', filename='css/forms.css') }}"
+        type="text/css"
+    />
+{% endblock %}
+
+{% block content %}
+    <div class="form-wrapper">
+      <h2 class="title">A type</h2>
+      <img src="{{url_for('static', filename='A.png')}}" alt="A type" >
+
+      <h2 class="title">E type</h2>
+      <img src="{{url_for('static', filename='E.png')}}" alt="E type" >
+
+      <h2 class="title">Feature Selection Data</h2>
+
+      <form method="POST" action="{{ url_for('feature') }}">
+          {{ form.csrf_token }}
+
+          <fieldset class="form-field">{{ form.window_size.label }} {{ form.window_size }}
+            {% if form.window_size.errors %}
+              <ul class="errors">
+                {% for error in form.window_size.errors %}
+                  <li class="error">
+                      <i class="fas fa-exclamation"></i> <span class="error-message">{{ error }}</span>
+                  </li>
+                {% endfor %}
+              </ul>
+            {% endif %}
+          </fieldset>
+
+          <fieldset class="form-field">{{ form.feat_input.label }} {{ form.feat_input }}
+            {% if form.feat_input.errors %}
+              <ul class="errors">
+                {% for error in form.feat_input.errors %}
+                  <li class="error">
+                      <i class="fas fa-exclamation"></i> <span class="error-message">{{ error }}</span>
+                  </li>
+                {% endfor %}
+              </ul>
+            {% endif %}
+          </fieldset>
+
+          <fieldset class="form-field">{{ form.embedded_dim_sample_entropy.label }} {{ form.embedded_dim_sample_entropy }}
+            <i class="fas fa-caret-down arrow-down"></i>
+            {% if form.embedded_dim_sample_entropy.errors %}
+              <ul class="errors">
+                {% for error in form.embedded_dim_sample_entropy.errors %}
+                  <li class="error">
+                      <i class="fas fa-exclamation"></i> <span class="error-message">{{ error }}</span>
+                  </li>
+                {% endfor %}
+              </ul>
+            {% endif %}
+          </fieldset>
+          
+          <fieldset class="form-field">{{ form.embedded_dim_correlation_dim.label }} {{ form.embedded_dim_correlation_dim }}
+            {% if form.embedded_dim_correlation_dim.errors %}
+              <ul class="errors">
+                {% for error in form.embedded_dim_correlation_dim.errors %}
+                  <li class="error">
+                      <i class="fas fa-exclamation"></i> <span class="error-message">{{ error }}</span>
+                  </li>
+                {% endfor %}
+              </ul>
+            {% endif %}
+          </fieldset>
+
+          <fieldset class="form-field">{{ form.embedded_dim_lyapunov_expo.label }} {{ form.embedded_dim_lyapunov_expo }}
+            {% if form.embedded_dim_lyapunov_expo.errors %}
+              <ul class="errors">
+                {% for error in form.embedded_dim_lyapunov_expo.errors %}
+                  <li class="error">
+                      <i class="fas fa-exclamation"></i> <span class="error-message">{{ error }}</span>
+                  </li>
+                {% endfor %}
+              </ul>
+            {% endif %}
+          </fieldset>
+
+          <fieldset class="form-field">{{ form.feat_selection_method.label }} {{ form.feat_selection_method }}
+            <i class="fas fa-caret-down arrow-down"></i>
+            {% if form.feat_selection_method.errors %}
+              <ul class="errors">
+                {% for error in form.feat_selection_method.errors %}
+                  <li class="error">
+                      <i class="fas fa-exclamation"></i> <span class="error-message">{{ error }}</span>
+                  </li>
+                {% endfor %}
+              </ul>
+            {% endif %}
+          </fieldset>
+
+          <fieldset class="form-field">{{ form.percentage_or_value.label }} {{ form.percentage_or_value }}
+            {% if form.percentage_or_value.errors %}
+              <ul class="errors">
+                {% for error in form.percentage_or_value.errors %}
+                  <li class="error">
+                      <i class="fas fa-exclamation"></i> <span class="error-message">{{ error }}</span>
+                  </li>
+                {% endfor %}
+              </ul>
+            {% endif %}
+          </fieldset>
+
+          <fieldset class="form-field">{{ form.cv_fold.label }} {{ form.cv_fold }}
+            {% if form.cv_fold.errors %}
+              <ul class="errors">
+                {% for error in form.cv_fold.errors %}
+                  <li class="error">
+                      <i class="fas fa-exclamation"></i> <span class="error-message">{{ error }}</span>
+                  </li>
+                {% endfor %}
+              </ul>
+            {% endif %}
+          </fieldset>
+
+          <fieldset class="form-field">{{ form.k_fold_index.label }} {{ form.k_fold_index }}
+            <i class="fas fa-caret-down arrow-down"></i>
+            {% if form.k_fold_index.errors %}
+              <ul class="errors">
+                {% for error in form.k_fold_index.errors %}
+                  <li class="error">
+                      <i class="fas fa-exclamation"></i> <span class="error-message">{{ error }}</span>
+                  </li>
+                {% endfor %}
+              </ul>
+            {% endif %}
+          </fieldset>
+
+          <fieldset class="form-field">{{ form.classifier_index.label }} {{ form.classifier_index }}
+            <i class="fas fa-caret-down arrow-down"></i>
+            {% if form.classifier_index.errors %}
+              <ul class="errors">
+                {% for error in form.classifier_index.errors %}
+                  <li class="error">
+                      <i class="fas fa-exclamation"></i> <span class="error-message">{{ error }}</span>
+                  </li>
+                {% endfor %}
+              </ul>
+            {% endif %}
+          </fieldset>
+
+          {{ form.run }}
+
+      </form>
+    </div>
+
+{% endblock %}
