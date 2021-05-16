@@ -13,13 +13,16 @@
 {% block content %}
 
     <div class="form-wrapper">
-      <h2 class="title">plot 1</h2>
+       <h2 class="title">statistics</h2>
+       <img src="{{url_for('static', filename='statistics.png')}}" alt="statistics" >
+       
+      <h2 class="title">confusion matrix</h2>
       <img src="{{url_for('static', filename='plot1.png')}}" alt="plot 1" >
 
-      <h2 class="title">plot 2</h2>
+      <h2 class="title">performance</h2>
       <img src="{{url_for('static', filename='plot2.png')}}" alt="plot 2" >
 
-      <h2 class="title">plot 3</h2>
+      <h2 class="title">classwise performance</h2>
       <img src="{{url_for('static', filename='plot3.png')}}" alt="plot 3" >
 
       <a href="{{ url_for('visualize') }}">
