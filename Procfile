@@ -1,1 +1,1 @@
-web: gunicorn app:EEG
+web: gunicorn ./FLASK_APP/wsgi:app
