@@ -49,7 +49,9 @@ def feature():
 @app.route("/success", methods=["GET", "POST"])
 def success():
     """Generic success page upon form submission."""
+    table=json.loads(open("table.json","r").read())
     return render_template(
         "success.jinja2",
-        template="success-template"
+        template="success-template",
+        table=table,
     )

@@ -13,9 +13,31 @@
 {% block content %}
 
     <div class="form-wrapper">
-       <h2 class="title">statistics</h2>
-       <img src="{{url_for('static', filename='statistics.png')}}" alt="statistics" >
-       
+       <div>
+        <h2 class="title">statistics</h2>
+        <table border="1" class="dataframe">
+            <thead>
+            <tr style="text-align: right;">
+                <th></th>
+                {% for column in table["columns"] %}
+                <th>{{column}}</th>
+                {%endfor%}
+            </tr>
+            </thead>
+            <tbody>
+            {% for data in table['data']%}
+            <tr>
+                <th>{{table["index"][loop.index-1]}}</th>
+                {% for each in data%}
+                  <th> {{each}}</th>
+                {%endfor%}
+            </tr>
+            {%endfor%}
+            </tbody>
+        </table>
+        </br>
+       </div>
+
       <h2 class="title">confusion matrix</h2>
       <img src="{{url_for('static', filename='plot1.png')}}" alt="plot 1" >
 

@@ -10,7 +10,6 @@ import seaborn as sns
 import scipy as sp
 import sys
 import os
-import dataframe_image as dfi
 class0='Normal'
 Class1 = 'Sick'
 
@@ -602,7 +601,7 @@ def till_classification(visualize_data, feature_data):
         
         ############# Printing Outputs
         script_dir = os.path.dirname(__file__)
-        stats_dataframe.dfi.export(script_dir+'/static/'+'statistics.png')
+        stats_dataframe.to_json("table.json",orient="split")
         # stats_dataframe.to_csv('stats_dataframe.csv')
         
         ############################ Confusion Matrix Plot
