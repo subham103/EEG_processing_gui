@@ -10,7 +10,7 @@ import seaborn as sns
 import scipy as sp
 import sys
 import os
-
+import dataframe_image as dfi
 class0='Normal'
 Class1 = 'Sick'
 
@@ -596,15 +596,17 @@ def till_classification(visualize_data, feature_data):
         
         
         stats_dataframe= pd.DataFrame({'Sensitivity':sensitivity_list, 'Specificity':specificity_list,
-                                       'Train Accuracy':accuracy_train_list , 'Test Accuracy':accuracy_test_list})
+                                       'Train Accuracy':accuracy_train_list , 'Test Accuracy':accuracy_test_list},index=["fold"+ str(i) for i in range(1,cv_fold+1) ]+["AVG"]+["STD"])
         boxplot_frame= pd.DataFrame({'Sensitivity':sensitivity_list[0:cv_fold], 'Specificity':specificity_list[0:cv_fold],
                                        'Train Accuracy':accuracy_train_list[0:cv_fold] , 'Test Accuracy':accuracy_test_list[0:cv_fold]})
         
         ############# Printing Outputs
-        stats_dataframe.to_csv('stats_dataframe.csv')
+        script_dir = os.path.dirname(__file__)
+        stats_dataframe.dfi.export(script_dir+'/static/'+'statistics.png')
+        # stats_dataframe.to_csv('stats_dataframe.csv')
         
         ############################ Confusion Matrix Plot
-        # plt.figure(figsize=(10,8))
+        plt.figure(figsize=(10,8))
         group_names = ['True Neg','False Pos','False Neg','True Pos']
         group_percentages = ["{0:.2%}".format(value) for value in avg_cf_matrix.flatten()/np.sum(avg_cf_matrix)]
         labels = [f"{v1}\n{v2}" for v1, v2 in
@@ -612,11 +614,11 @@ def till_classification(visualize_data, feature_data):
         labels = np.asarray(labels).reshape(2,2)
         sns.heatmap(avg_cf_matrix, annot=labels, fmt='', cmap='Blues')
         plt.title("confusion_matrix",fontsize=15)
-        script_dir = os.path.dirname(__file__)
-        plt.savefig(script_dir + '/static/' + 'plot1.png') 
+        plt.savefig(script_dir + '/static/' + 'plot1.png',bbox_inches = 'tight') 
             
         ########################### Accuracy, Sensitivity and Specificity plot
-        fig, ax = plt.subplots()
+        plt.figure()
+        ax=plt.axes()
         names = ['Specificity','Sensitivity','Accuracy']
         x_pos = np.arange(len(names))
         CTEs = [specificity_avg, sensitivity_avg, accuracy_test_avg]
@@ -631,10 +633,12 @@ def till_classification(visualize_data, feature_data):
         plt.tight_layout()
         plt.ylabel("Percentage")
         plt.title("Performance",fontsize=15)
-        plt.savefig(script_dir + '/static/' + 'plot2.png') 
+        plt.savefig(script_dir + '/static/' + 'plot2.png',bbox_inches = 'tight') 
         #plt.show()
             
         ########################## Classwise Performance
+        plt.figure()
+        ax=plt.axes()
         data={"class":["class 0","class 1"],"accuracy":[class0_acc,class1_acc]}
         ax = sns.barplot(x="class", y="accuracy", data=data,edgecolor="white")
         ax.set(ylim=(0, 1.2))
@@ -643,7 +647,7 @@ def till_classification(visualize_data, feature_data):
         ax.text(1, data["accuracy"][1]/2, "{0:.2%}".format(data["accuracy"][1]), ha="center") 
         plt.ylabel("percentage",fontsize = 10)
         plt.title("Classwise Performance",fontsize=15)
-        plt.savefig(script_dir + '/static/' + 'plot3.png') 
+        plt.savefig(script_dir + '/static/' + 'plot3.png',bbox_inches = 'tight') 
     
 ############################################################ 
     
