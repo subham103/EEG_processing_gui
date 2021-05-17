@@ -10,6 +10,11 @@ from .forms import VisualizeForm, FeatureForm
 from .PHN_300_flask import till_display, till_classification
 
 
+# A welcome message to test the server
+@app.route('/')
+def index():
+    return "<h1>Welcome to our EEG Project !!</h1>"
+
 @app.route("/visualize", methods=["GET", "POST"])
 def visualize():
     """Landing page."""
