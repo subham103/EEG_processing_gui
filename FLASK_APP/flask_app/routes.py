@@ -4,6 +4,8 @@ from flask import redirect, render_template, url_for
 import sys
 import json
 from flask.globals import request, session
+from werkzeug.utils import secure_filename
+import os
 
 from matplotlib.pyplot import title
 from .forms import VisualizeForm, FeatureForm
@@ -20,11 +22,34 @@ def visualize():
     """Landing page."""
     form = VisualizeForm()
     if form.validate_on_submit():
-        print(form.data, file=sys.stderr)
-        till_display(form.data)
+        # files_filenames = []
+        for file in form.files_A.data:
+            file_filename = secure_filename(file.filename)
+            script_dir = os.path.dirname(__file__)
+            # print(os.path.join(script_dir + '/' + app.config['UPLOAD_FOLDER'] + '/A',file_filename), file=sys.stderr)
+            file.save(os.path.join(script_dir + '/' + app.config['UPLOAD_FOLDER'] + '/A',file_filename))
+            # files_filenames.append(file_filename)
+        # print(files_filenames)
+
+        for file in form.files_B.data:
+            file_filename = secure_filename(file.filename)
+            script_dir = os.path.dirname(__file__)
+            file.save(os.path.join(script_dir + '/' + app.config['UPLOAD_FOLDER'] + '/E',file_filename))
+        
         # with open('visualize_dump.json', 'w') as f:
         #     json.dump(form.data, f)
-        session["visualize_data"] = form.data
+        # del form.data['files_A']
+        # del form.data['files_B']
+        # form.data.pop('files_A')
+        # some_val = form.data.pop('files_B')
+        visualize_data = {}
+        for key in form.data:
+            if key!="files_A" and key!="files_B":
+                visualize_data[key]=form.data[key]
+        till_display(visualize_data)
+        # print(some_val, file=sys.stderr)
+        print(visualize_data, file=sys.stderr)
+        session["visualize_data"] = visualize_data
         return redirect(url_for("feature"))
     return render_template(
         "index.jinja2",
@@ -39,10 +64,6 @@ def feature():
     form = FeatureForm()
     # print(request.args.get('obj'), file=sys.stderr)
     if form.validate_on_submit():
-        # feature_form_data = form.data
-        # visualize_form_data = json.loads(open("visualize_dump.json","r").read())
-        # with open('visualize_dump.json', 'w') as f:
-        #     json.dump({}, f)
         visualize_form_data = session["visualize_data"]
         till_classification(visualize_form_data, form.data)
         return redirect(url_for("success"))
@@ -62,3 +83,16 @@ def success():
         template="success-template",
         table=table,
     )
+
+# @app.route('/upload',methods = ['GET','POST'])
+# def upload_file():
+#     if request.method =='POST':
+#         file = request.files.getlist("file[]")
+#         print(len(file), file=sys.stderr)
+#         for ele in file:
+#             if ele:
+#                 filename = secure_filename(ele.filename)
+#                 script_dir = os.path.dirname(__file__)
+#                 ele.save(os.path.join(script_dir + '/' + app.config['UPLOAD_FOLDER'],filename))
+#         return redirect(url_for("success"))
+#     return render_template('file_upload.html')

@@ -1,0 +1,1 @@
+{"columns":["Sensitivity","Specificity","Train Accuracy","Test Accuracy"],"index":["fold1","fold2","fold3","fold4","fold5","AVG","STD"],"data":[[94.4,100.0,98.8,97.5],[90.5,100.0,99.4,95.0],[100.0,100.0,99.4,100.0],[100.0,100.0,98.8,100.0],[100.0,100.0,98.8,100.0],["Avg: 97.0","Avg: 100.0","Avg: 99.0","Avg: 98.5"],["Std: 3.9","Std: 0.0","Std: 0.3","Std: 2.0"]]}
