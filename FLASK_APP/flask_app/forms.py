@@ -20,7 +20,7 @@ class VisualizeForm(FlaskForm):
     # address_B = StringField("address_B", [DataRequired()])
     files_A = MultipleFileField('File(s) Upload A', [DataRequired()])
     files_B = MultipleFileField('File(s) Upload E', [DataRequired()])
-    sampling_rate = StringField("sampling_rate", [DataRequired()])
+    sampling_rate = StringField("sampling_rate", [DataRequired()],default="173.6")
     apply_filter = SelectField(
         "apply_filter",
         [DataRequired()],
@@ -29,22 +29,24 @@ class VisualizeForm(FlaskForm):
             ("no", "no"),
         ],
     )
-    low_frequency = SelectField(
-        "low_frequency",
-        [DataRequired()],
-        choices=[
-            ("80", "80"),
-            ("None", "None"),
-        ],
-    )
-    high_frequency = SelectField(
-        "high_frequency",
-        [DataRequired()],
-        choices=[
-            ("10", "10"),
-            ("None", "None"),
-        ],
-    )
+    low_frequency = StringField("low_frequency", [DataRequired()],default="10")
+    # low_frequency = SelectField(
+    #     "low_frequency",
+    #     [DataRequired()],
+    #     choices=[
+    #         ("80", "80"),
+    #         ("None", "None"),
+    #     ],
+    # )
+    high_frequency = StringField("high_frequency", [DataRequired()],default="80")
+    # high_frequency = SelectField(
+    #     "high_frequency",
+    #     [DataRequired()],
+    #     choices=[
+    #         ("10", "10"),
+    #         ("None", "None"),
+    #     ],
+    # )
     filter_method = SelectField(
         "filter_method",
         [DataRequired()],
@@ -62,25 +64,25 @@ class VisualizeForm(FlaskForm):
             ("blackman", "blackman"),
         ],
     )
-    delta_frequency_initial = StringField("delta_frequency_initial", [DataRequired()])
-    delta_frequency_final = StringField("delta_frequency_final", [DataRequired()])
-    theta_frequency_initial = StringField("theta_frequency_initial", [DataRequired()])
-    theta_frequency_final = StringField("theta_frequency_final", [DataRequired()])
-    alpha_frequency_initial = StringField("alpha_frequency_initial", [DataRequired()])
-    alpha_frequency_final = StringField("alpha_frequency_final", [DataRequired()])
-    beta_frequency_initial = StringField("beta_frequency_initial", [DataRequired()])
-    beta_frequency_final = StringField("beta_frequency_final", [DataRequired()])
-    gamma_frequency_initial = StringField("gamma_frequency_initial", [DataRequired()])
-    gamma_frequency_final = StringField("gamma_frequency_final", [DataRequired()])
-    initial_datapoint = StringField("initial_datapoint", [DataRequired()])
-    final_datapoint = StringField("final_datapoint", [DataRequired()])
+    delta_frequency_initial = StringField("delta_frequency_initial", [DataRequired()],default="0.5")
+    delta_frequency_final = StringField("delta_frequency_final", [DataRequired()],default="3.5")
+    theta_frequency_initial = StringField("theta_frequency_initial", [DataRequired()],default="3.5")
+    theta_frequency_final = StringField("theta_frequency_final", [DataRequired()],default="7.5")
+    alpha_frequency_initial = StringField("alpha_frequency_initial", [DataRequired()],default="7.5")
+    alpha_frequency_final = StringField("alpha_frequency_final", [DataRequired()],default="13")
+    beta_frequency_initial = StringField("beta_frequency_initial", [DataRequired()],default="13")
+    beta_frequency_final = StringField("beta_frequency_final", [DataRequired()],default="30")
+    gamma_frequency_initial = StringField("gamma_frequency_initial", [DataRequired()],default="30")
+    gamma_frequency_final = StringField("gamma_frequency_final", [DataRequired()],default="50")
+    initial_datapoint = StringField("initial_datapoint", [DataRequired()],default="0")
+    final_datapoint = StringField("final_datapoint", [DataRequired()],default="4097")
 
     submit = SubmitField("Next")
 
 
 class FeatureForm(FlaskForm):
     """Feature Form"""
-    window_size = StringField("window_size", [DataRequired()])
+    window_size = StringField("window_size", [DataRequired()],default="4097")
     feat_input = SelectMultipleField(
         "feat_input",
         choices=[
@@ -110,8 +112,8 @@ class FeatureForm(FlaskForm):
             ("none", "none"),
         ],
     )
-    percentage_or_value = StringField("percentage_or_value", [DataRequired()])
-    cv_fold = StringField("cv_fold", [DataRequired()])
+    percentage_or_value = StringField("percentage_or_value", [DataRequired()],default="20")
+    cv_fold = StringField("cv_fold", [DataRequired()],default="5")
     k_fold_index = SelectField(
         "k_fold_index",
         [DataRequired()],
