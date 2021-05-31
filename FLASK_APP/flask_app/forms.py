@@ -8,6 +8,7 @@ from wtforms import (
     SubmitField,
     SelectMultipleField,
     TextAreaField,
+    MultipleFileField,
 )
 from wtforms.validators import URL, DataRequired, Email, EqualTo, Length
 # from FLASK_APP.aa import till_display
@@ -15,8 +16,10 @@ from wtforms.validators import URL, DataRequired, Email, EqualTo, Length
 
 class VisualizeForm(FlaskForm):
     """Visualize Form"""
-    address_A = StringField("address_A", [DataRequired()])
-    address_B = StringField("address_B", [DataRequired()])
+    # address_A = StringField("address_A", [DataRequired()])
+    # address_B = StringField("address_B", [DataRequired()])
+    files_A = MultipleFileField('File(s) Upload A', [DataRequired()])
+    files_B = MultipleFileField('File(s) Upload E', [DataRequired()])
     sampling_rate = StringField("sampling_rate", [DataRequired()])
     apply_filter = SelectField(
         "apply_filter",

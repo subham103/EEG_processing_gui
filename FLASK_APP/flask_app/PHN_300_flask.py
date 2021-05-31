@@ -211,8 +211,9 @@ def till_display_proceesing(file_address,data):
 ####################################################
 #flask display 1
 def till_display(data):        
-   file_address0 =data['address_A']            # example r'D:\EEG\EEG dataset\Epilepic Dataset\A'  # INPUT
-   file_address1 =data['address_B']               #examle r'D:\EEG\EEG dataset\Epilepic Dataset\E'  # INPUT
+   script_dir = os.path.dirname(__file__)
+   file_address0 =script_dir + '/uploads/A'           # example r'D:\EEG\EEG dataset\Epilepic Dataset\A'  # INPUT
+   file_address1 =script_dir + '/uploads/E'               #examle r'D:\EEG\EEG dataset\Epilepic Dataset\E'  # INPUT
    till_display_proceesing(file_address0,data)
    till_display_proceesing(file_address1,data)
 
@@ -466,9 +467,10 @@ def till_classification_processing(file_address, visualize_data, feature_data):
 
     return appended_array
 #######################################
-def till_classification(visualize_data, feature_data):       
-        file_address0 =visualize_data['address_A'] #example r'D:\EEG\EEG dataset\Epilepic Dataset\A'  # INPUT
-        file_address1 =visualize_data['address_B'] #example r'D:\EEG\EEG dataset\Epilepic Dataset\E'  # INPUT
+def till_classification(visualize_data, feature_data):  
+        script_dir = os.path.dirname(__file__)     
+        file_address0 =script_dir + '/uploads/A'    #example r'D:\EEG\EEG dataset\Epilepic Dataset\A'  # INPUT
+        file_address1 =script_dir + '/uploads/E'    #example r'D:\EEG\EEG dataset\Epilepic Dataset\E'  # INPUT
                 
         # Till now a def file which take two different classes as input
               

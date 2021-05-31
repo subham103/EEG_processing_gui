@@ -12,13 +12,13 @@
     <div class="form-wrapper">
       <h2 class="title">Validation Data</h2>
 
-      <form method="POST" action="{{ url_for('visualize') }}">
+      <form method="POST" action="{{ url_for('visualize') }}" enctype="multipart/form-data">
           {{ form.csrf_token }}
 
-          <fieldset class="form-field">{{ form.address_A.label }} {{ form.address_A }}
-            {% if form.address_A.errors %}
+          <fieldset class="form-field">{{ form.files_A.label }} {{ form.files_A }}
+            {% if form.files_A.errors %}
               <ul class="errors">
-                {% for error in form.address_A.errors %}
+                {% for error in form.files_A.errors %}
                   <li class="error">
                       <i class="fas fa-exclamation"></i> <span class="error-message">{{ error }}</span>
                   </li>
@@ -27,10 +27,10 @@
             {% endif %}
           </fieldset>
 
-          <fieldset class="form-field">{{ form.address_B.label }} {{ form.address_B }}
-            {% if form.address_B.errors %}
+          <fieldset class="form-field">{{ form.files_B.label }} {{ form.files_B }}
+            {% if form.files_B.errors %}
               <ul class="errors">
-                {% for error in form.address_B.errors %}
+                {% for error in form.files_B.errors %}
                   <li class="error">
                       <i class="fas fa-exclamation"></i> <span class="error-message">{{ error }}</span>
                   </li>
