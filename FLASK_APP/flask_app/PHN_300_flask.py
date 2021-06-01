@@ -69,11 +69,11 @@ def till_display_proceesing(file_address,data):
     apply_filter=data['apply_filter']  #option ['yes','no']
     ############### INPUT
     if(apply_filter=='yes'):
-        low_freq= data['low_frequency']
-        high_freq=data['high_frequency']             # None for low pass filters
+        low_freq= data['low_frequency'] if data['low_frequency'].lower()!="none" else None
+        high_freq= data['high_frequency'] if data['high_frequency'].lower()!="none" else None            # None for low pass filters
         filter_method= data['filter_method'] #option to be given ['fir', 'iir'] 
         window_type= data['window_type']     #option to be given ['hamming','hann','blackman']
-    
+        
         file_data=mne.filter.filter_data(file_data.astype(float),sfreq=sampling_freq,l_freq=low_freq,h_freq=high_freq,method=filter_method,fir_window=window_type)
         
     elif(apply_filter=='no'):
