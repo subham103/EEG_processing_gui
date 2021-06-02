@@ -124,9 +124,6 @@ def till_display_proceesing(file_address,data):
     beta_in, beta_out= find_nearest(beta_freq[0]),find_nearest(beta_freq[1])
     gamma_in, gamma_out= find_nearest(gamma_freq[0]),find_nearest(gamma_freq[1])
     
-    
-    
-    
     #Noise
     ZxxE6[:][0:gamma_out+1]= 0
     _,Noise = sps.istft(ZxxE6,fs=173.6)
@@ -150,9 +147,6 @@ def till_display_proceesing(file_address,data):
     ZxxE5[:][0:delta_in]= 0
     ZxxE5[:][delta_out+1:]= 0
     _,Delta = sps.istft(ZxxE5,fs=173.6)
-    
-    
-    
     
     #############################
     ### Display option for displaying sub-bands  # INPUT
