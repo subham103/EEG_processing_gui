@@ -172,8 +172,8 @@ def till_display_proceesing(file_address,data):
     
     plt.subplot(6,1,2)
     plt.plot(t,Delta[k:l])
-    #plt.title('Delta',fontsize=18)
-    plt.axis([None, None, -1000, 1000])
+    plt.title('Delta',fontsize=18)
+    #plt.axis([None, None, -1000, 1000])
     
     
     plt.subplot(6,1,3)
